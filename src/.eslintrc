@@ -7,10 +7,6 @@
     "module": 1,
     "cordova": 1,
   },
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-  },
   "ecmaFeatures": {
     "arrowFunctions": 1,
     "blockBindings": 1,

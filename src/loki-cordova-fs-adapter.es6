@@ -2,7 +2,7 @@ class LokiCordovaFSAdapterError extends Error {}
 
 const TAG = "[LokiCordovaFSAdapter]";
 var lock = false;
-var backOff = 1000;
+var backOff = 500;
 
 class LokiCordovaFSAdapter {
     constructor(options) {
@@ -68,10 +68,10 @@ class LokiCordovaFSAdapter {
                         } else {
                             var n = contents.indexOf('==}}}DBEND{{{');
                             if (n === -1) {
-                                console.error(TAG, "error reading file", err);
-                                callback(new LokiCordovaFSAdapterError("Unable to read file" + err.message));
+                                console.error(TAG, "error reading file, file corrupt?");
+                                callback(new LokiCordovaFSAdapterError("Unable to read file, file corrupt?"));
                             } else {
-                                var newContents = contents.substring(0, n - 1);
+                                var newContents = contents.substring(0, n);
                                 callback(newContents);
                             }
                         }
